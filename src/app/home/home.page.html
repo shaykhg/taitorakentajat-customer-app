@@ -1,0 +1,140 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Home</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div class="container">
+
+    <ion-slides pager="true">
+      <ion-slide routerLink="/tabs/tab2">
+        <div class="head-card">
+          <img style="border-radius: 16px" src="/assets/img/header/1.png" alt="">
+        </div>
+      </ion-slide>
+      <ion-slide routerLink="/tabs/tab2">
+        <div class="head-card">
+          <img style="border-radius: 16px" src="/assets/img/header/2.png" alt="">
+        </div>
+      </ion-slide>
+      <ion-slide routerLink="/tabs/tab2">
+        <div class="head-card">
+          <img style="border-radius: 16px" src="/assets/img/header/3.png" alt="">
+        </div>
+      </ion-slide>
+
+    </ion-slides>
+
+    <div class="title" >Tilla Reminti</div>
+    <div class="row m-b-30">
+      <div class="col-11" *ngIf="allServices.length > 0">
+        <ion-slides [options]="slideOpts" #serviceSlide>
+          <ion-slide (click)="changeTab(service.url)" *ngFor="let service of allServices">
+            <div>
+              <img [src]="service.image.url" alt="">
+
+              <div class="m-t-10">
+                {{service.name.length> 10 ? service.name.slice(0, 10): service.name}}
+              </div>
+            </div>
+
+          </ion-slide>
+
+        </ion-slides>
+
+      </div>
+      <div class="col-1 align-self-center">
+        <div (click)="swipeNext()">
+          <ion-icon name="arrow-forward"></ion-icon>
+        </div>
+      </div>
+    </div>
+
+    <div class="title">Taito rakentajat</div>
+    <div class="row m-b-30">
+      <div *ngFor="let blog of taitoBlog" class="col"><a [href]="blog.redirect">
+        <img [src]="blog.image.url" alt="">
+      </a>
+      </div>
+    </div>
+
+    <div class="title">Inspiratiaotaa...</div>
+    <div class="row m-b-30">
+      <div class="col-11">
+        <ion-slides [options]="slideOpts" #inspirationSlide>
+          <ion-slide *ngFor="let blog of inspirationBlog">
+            <div>
+              <img [src]="blog.image.url" alt="">
+              <div>
+                {{blog.title.length> 10 ? blog.title.slice(0, 10): blog.name}}
+              </div>
+            </div>
+          </ion-slide>
+
+        </ion-slides>
+
+      </div>
+      <div class="col-1 align-self-center">
+        <div (click)="swipeNextInspiration()">
+          <ion-icon name="arrow-forward"></ion-icon>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="link-cont">
+        <div class="title">Pikalinkit</div>
+        <div class="links">
+          <div>Asiakaspalavelu</div>
+          <div>
+            <ion-icon class="link-arrow" name="arrow-forward"></ion-icon>
+          </div>
+        </div>
+        <div class="links">
+          <div>Tilaa remontti</div>
+          <div>
+            <ion-icon class="link-arrow" name="arrow-forward"></ion-icon>
+          </div>
+        </div>
+        <div class="links">
+          <div>Kuinka tilaan remontin?</div>
+          <div>
+            <ion-icon class="link-arrow" name="arrow-forward"></ion-icon>
+          </div>
+        </div>
+        <div class="links">
+          <div>Tietoa meista</div>
+          <div>
+            <ion-icon class="link-arrow" name="arrow-forward"></ion-icon>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+  <div class="footer">
+    <div class="t-center fs-20 m-t-10 m-b-10">Yhteistyossa</div>
+    <div class="t-center">
+      <span><img src="/assets/img/footer/logo-stark.png" class="logo-w-25" alt=""></span>
+      <span><img src="/assets/img/footer/logo-charmia.png" class="logo-w-15" alt=""></span>
+    </div>
+    <div class="dis-flex justify-content-between">
+      <img src="/assets/img/footer/taito-footer.png" class="logo-w-20" alt="">
+      <span class="dis-flex self-center"><span class="mdi mdi-email fs-20 self-center brand-color m-l-5"></span><span class="fs-12 self-center">
+        <a href="mailto:info@taitorakentajat.fi" style="color:white;text-decoration: none">info@taitorakentajat.fi</a>
+      </span></span>
+
+      <span class="t-center self-center m-r-5">
+        <span class="mdi mdi-facebook fs-24"></span>
+        <a href="https://www.instagram.com/taitorakentajat/" style="color: white">
+          <span class="mdi mdi-instagram fs-24"></span>
+        </a>
+      </span>
+    </div>
+
+  </div>
+
+</ion-content>

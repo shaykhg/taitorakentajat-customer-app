@@ -1,0 +1,10 @@
+<div class="container d-flex justify-content-between text-center mt-5">
+  <mat-progress-bar [value]="data.progress" class="progress" mode="determinate"></mat-progress-bar>
+  <div *ngFor="let step of stepper.steps">
+
+    <span (click)="stepper.stepper(step)" [ngClass]="stepper.currentStep === step.index ? 'active' : (step.enable ? 'enabled' : 'inactive')"
+          class="step" ><img [src]="step.img" alt=""></span>
+  </div>
+
+
+</div>

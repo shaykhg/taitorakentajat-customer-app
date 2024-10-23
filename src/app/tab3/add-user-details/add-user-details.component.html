@@ -1,0 +1,28 @@
+<div class="container mt-5">
+  <mat-card>
+    <form [formGroup]="userDetail" (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-label>Address</mat-label>
+        <input type="text" matInput formControlName="address">
+        <mat-error>Address is required</mat-error>
+      </mat-form-field>
+
+       <mat-form-field appearance="outline" class="w-100">
+        <mat-label>City</mat-label>
+        <input type="text" matInput formControlName="city">
+        <mat-error>City is required</mat-error>
+      </mat-form-field>
+
+       <mat-form-field appearance="outline" class="w-100">
+        <mat-label>Postcode</mat-label>
+        <input type="text" matInput formControlName="postcode">
+        <mat-error>Postcode is required</mat-error>
+      </mat-form-field>
+
+      <div>
+        <button class="btn_btn" mat-raised-button type="submit">Add</button>
+      </div>
+
+    </form>
+  </mat-card>
+</div>

@@ -1,0 +1,102 @@
+<div>
+  <div class="sheet-padding">
+    <div class="row">
+      <div class="col">
+        <div class="heading"><b>Sort and Filters</b></div>
+      </div>
+      <div class="col-auto text-end">
+        <span class="mdi mdi-close" (click)="close()" style="font-size: 24px"></span>
+      </div>
+    </div>
+      <div class="sort-section">
+        <div class="section-heading"><b>By Price</b></div>
+        <mat-radio-group [(ngModel)]="data.filters.priceSort">
+          <ion-grid>
+            <ion-row>
+              <ion-col size="auto">
+                <mat-radio-button value="ASC">Ascending</mat-radio-button>
+              </ion-col>
+              <ion-col>
+                <mat-radio-button value="DESC">Descending</mat-radio-button>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </mat-radio-group>
+      </div>
+
+      <div class="sort-section">
+        <div class="section-heading"><b>By Date</b></div>
+        <mat-radio-group [(ngModel)]="data.filters.dateSort">
+          <ion-grid>
+            <ion-row>
+              <ion-col size="auto">
+                <mat-radio-button value="ASC">Ascending</mat-radio-button>
+              </ion-col>
+
+              <ion-col>
+                <mat-radio-button value="DESC">Descending</mat-radio-button>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </mat-radio-group>
+      </div>
+
+    <hr>
+
+      <div class="filter-section">
+        <div class="section-heading"><b>Price Range</b></div>
+        <ion-range min="1000" max="100000" step="1000" [dualKnobs]="true" snaps="true" pin="true" color="primary" [(ngModel)]="data.filters.price">
+          <ion-label slot="start">1K</ion-label>
+          <ion-label slot="end">100K</ion-label>
+        </ion-range>
+        <div class="section-heading-nm text-center" *ngIf="data.filters.price"><b>&euro; {{data.filters.price.lower}} - &euro;{{data.filters.price.upper}}</b></div>
+      </div>
+
+    <div class="section-heading"><b>Date Range</b></div>
+    <mat-form-field appearance="outline" class="w-100">
+      <mat-label>Start Date</mat-label>
+      <input matInput [matDatepicker]="picker" [(ngModel)]="data.filters.start" readonly>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="w-100">
+      <mat-label>End Date</mat-label>
+      <input matInput [matDatepicker]="endPicker" [(ngModel)]="data.filters.end" readonly>
+      <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
+      <mat-datepicker #endPicker></mat-datepicker>
+    </mat-form-field>
+
+
+    <div class="section-heading"><b>Cities</b></div>
+    <mat-form-field appearance="outline" class="w-100">
+      <mat-label>Cities</mat-label>
+      <mat-chip-list #chipList aria-label="Language selection">
+        <mat-chip (removed)="remove(city)" *ngFor="let city of data.filters.cities">
+          {{city | titlecase}}
+          <span class="mdi mdi-close" matChipRemove></span>
+        </mat-chip>
+        <input #cityInput (matChipInputTokenEnd)="add($event)" [formControl]="cityCtrl" [matAutocomplete]="auto" [matChipInputFor]="chipList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes" placeholder="Enter City">
+      </mat-chip-list>
+
+      <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+        <mat-option *ngFor="let lang of filteredCities | async" [value]="lang">
+          {{lang}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+
+
+    <ion-grid class="pd-0">
+      <ion-row>
+        <ion-col>
+          <button mat-stroked-button class="primary-stroke-button" (click)="clear()">Clear Filters</button>
+        </ion-col>
+        <ion-col>
+          <button mat-raised-button class="primary-button" (click)="apply()">Apply Filters</button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+  </div>
+</div>

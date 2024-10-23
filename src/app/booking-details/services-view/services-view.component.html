@@ -1,0 +1,77 @@
+<div class="content">
+  <mat-card *ngFor="let service of booking.services" class="booking-card mat-elevation-z3">
+    <div class="row heading">
+      <div class="col"><b>{{service.name}}</b></div>
+      <div class="col-auto"><b>&euro;{{service.price}}</b></div>
+    </div>
+
+    <div *ngIf="service.viewType === 1">
+      <div class="row">
+        <div class="col">
+          Area
+        </div>
+        <div class="col t-left">
+          {{service.sqm}} meter <sup>2</sup>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          Incension
+        </div>
+        <div class="col t-left">
+          {{service.incension.viewValue}}
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          Material
+        </div>
+        <div class="col t-left">
+          {{service.material.viewValue}}
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="service.viewType === 2">
+
+    </div>
+
+    <div *ngIf="service.viewType === 3">
+
+    </div>
+
+    <div *ngIf="service.viewType === 4">
+      <div class="row">
+        <div class="col">
+          Area
+        </div>
+        <div class="col">
+          {{service.sqm}} meter <sup>2</sup>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          Change Paint
+        </div>
+        <div class="col t-left">
+          {{service.paint.viewValue.toLowerCase().includes('yes') ? 'Yes' : 'No'}}
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          Base Job
+        </div>
+        <div class="col t-left">
+          {{service.baseJob.viewValue}}
+        </div>
+      </div>
+
+
+    </div>
+
+  </mat-card>
+</div>

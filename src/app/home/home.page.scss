@@ -1,0 +1,47 @@
+.head-card{
+  margin: 10px 0 40px 0;
+  border-radius: 16px;
+}
+.title{
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.links{
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #cdcdcd;
+  margin: 10px 0;
+}
+
+.link-cont{
+  margin: 5px 20px;
+}
+
+.footer{
+  background: #1a1a1a;
+  color: white;
+}
+
+.link-arrow{
+  color: #59bd2f;
+  font-size: 22px;
+}
+
+.logo-w-15{
+  width: 15%;
+}
+
+.logo-w-25{
+  width: 25%;
+}
+.logo-w-20{
+  width: 20%;
+}
+.logo-w-50{
+  width: 50%;
+}
+
+.brand-color{
+  color: #59bd2f;
+}

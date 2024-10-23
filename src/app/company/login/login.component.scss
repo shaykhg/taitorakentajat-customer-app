@@ -1,0 +1,40 @@
+.container-fluid {
+  background-color: #e7f5e0;
+  height: 100%;
+  font-family: "Montserrat", sans-serif;
+
+
+  .btn_btn{
+    background-color: #5bbd30;
+    color: #FFFFFF;
+    padding: 16px 124px;
+    border-radius: 20px;
+    font-weight: 500;
+  }
+
+  .sign_up{
+    font-weight: 500;
+  }
+
+  .sign_up span{
+    color: #5bbd30;
+  }
+
+  .login{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+
+  .logo{
+    //margin-top: 75px;
+  }
+  .login_form{
+    //margin-bottom: 66px;
+    padding: 24px;
+    position: relative;
+    top: -118px;
+  }
+}

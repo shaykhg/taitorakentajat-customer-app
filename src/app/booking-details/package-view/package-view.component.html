@@ -1,0 +1,63 @@
+<div class="content">
+
+  <div *ngIf="booking.packages.length > 0;else noPackages" >
+    <mat-card  class="mat-elevation-z3 booking-card" *ngFor="let pack of booking.packages">
+
+      <div class="row heading">
+        <div class="col"><b>{{pack.name}}</b></div>
+        <div class="col-auto"><b>&euro;{{pack.price}}</b></div>
+      </div>
+      <div class="row">
+        <div class="col-auto">{{pack.desc}}</div>
+      </div>
+
+      <hr>
+
+      <div *ngIf="!pack.expand">
+        <div class="row">
+          <div class="col-auto">
+            <img [src]="util.BASE_URL + pack.products[0].image.url" class="prod-img">
+          </div>
+          <div class="col">
+            {{pack.products[0].name}}
+          </div>
+        </div>
+        <div class="t-right">
+          <span class="mdi mdi-chevron-down fs-24" (click)="pack.expand = true"></span>
+          <span (click)="pack.expand = true">Show More</span>
+        </div>
+      </div>
+
+      <div *ngIf="pack.expand">
+        <div class="row m-t-10" *ngFor="let product of pack.products">
+          <div class="col-auto">
+            <img [src]="util.BASE_URL + product.image.url" class="prod-img">
+          </div>
+          <div class="col">
+            {{product.name}}
+          </div>
+        </div>
+
+        <div class="t-right">
+          <span class="mdi mdi-chevron-up fs-24" (click)="pack.expand = false"></span>
+          <span (click)="pack.expand = false">Show Less</span>
+        </div>
+      </div>
+
+
+    </mat-card>
+
+  </div>
+  <ng-template #noPackages>
+
+  <mat-card class="mat-elevation-z3 booking-card">
+      <div class="text-center">
+        <span style="color: #767676" class="mdi mdi-package-up fs-64"></span>
+      </div>
+      <h3 style="color: #767676">No packages Found</h3>
+
+  </mat-card>
+
+  </ng-template>
+
+</div>

@@ -1,0 +1,87 @@
+.example-container {
+  border: 1px solid black;
+  padding: 10px;
+  margin: 10px;
+}
+
+.example-step-navigation-bar {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 10px;
+}
+
+.example-active {
+  color: blue;
+}
+
+.example-step {
+  background: transparent;
+  border: 0;
+  margin: 0 10px;
+  padding: 10px;
+  color: black;
+}
+
+.example-step.example-active {
+  color: blue;
+  border-bottom: 1px solid blue;
+}
+
+.example-nav-button {
+  background: transparent;
+  border: 0;
+}
+
+.step{
+  background-color: #E5E5E5;
+  border-radius: 50%;
+  padding: 1px 9px;
+  color: #6A6A6A;
+  position: relative;
+}
+
+.active::before{
+  background-color: #a8e58f87;
+  content: "";
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  padding: 19px;
+  left: -6px;
+  top: -6px;
+  bottom: 0;
+  right: 0;
+  z-index: -1;
+  border-radius: 50%;
+}
+
+.step:active{
+  top:3px;
+  background-image: linear-gradient(bottom, rgb(62,184,229) 0%, rgb(44,160,202) 100%);
+  box-shadow: inset 0px 1px 0px #6eeab0, 0px 2px 0px 0px #378515, 0px 5px 3px #999;
+}
+
+.completed::after{
+  content: "";
+  background-color: #4caf50;
+  position: absolute;
+  width: 66%;
+  height: 5px;
+  top: 60px;
+  left: 65px;
+  z-index: -999;
+}
+
+.active{
+  background-color: #59BD2F;
+  color: #ffffff;
+}
+
+.progress{
+  position: absolute;
+  left: 42px;
+  top: 60px;
+  width: 75%;
+  z-index: -999;
+}

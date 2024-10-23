@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Complete Booking</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <mat-card class="my-2 mx-2 prop_card">
+    <div class="upload_div">
+      <h3>Add Photos</h3>
+      <p>Add photos of property</p>
+    </div>
+
+    <div class="text-center">
+
+      <div class="upload-btn-wrapper">
+        <button *ngIf="imageUrl.one.length === 0" class="btn_up">+</button>
+        <img *ngIf="imageUrl.one.length > 0" [src]="imageUrl.one" class="product_img">
+        <input (change)="onFileChange($event, 'one')" type="file">
+      </div>
+
+      <div class="upload-btn-wrapper">
+        <button *ngIf="imageUrl.two.length === 0" class="btn_up">+</button>
+        <img *ngIf="imageUrl.two.length > 0" [src]="imageUrl.two" class="product_img">
+        <input (change)="onFileChange($event, 'two')" type="file">
+      </div>
+
+      <div class="upload-btn-wrapper">
+        <button *ngIf="imageUrl.three.length === 0" class="btn_up">+</button>
+        <img *ngIf="imageUrl.three.length > 0" [src]="imageUrl.three" class="product_img">
+        <input (change)="onFileChange($event, 'three')" type="file">
+      </div>
+
+      <div class="upload-btn-wrapper">
+        <button *ngIf="imageUrl.four.length === 0" class="btn_up">+</button>
+        <img *ngIf="imageUrl.four.length > 0" [src]="imageUrl.four" class="product_img">
+        <input (change)="onFileChange($event, 'four')" type="file">
+      </div>
+
+    </div>
+
+    <div>
+      <mat-form-field appearance="fill" class="w-100  pt-4">
+        <mat-label>Add Notes</mat-label>
+        <textarea [(ngModel)]="notes" matInput></textarea>
+        <mat-error>This Field Can't Be Empty</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="t-right">
+      <button (click)="imageUpload()" class="complete-btn" mat-flat-button>Complete Order</button>
+    </div>
+
+  </mat-card>
+
+</ion-content>

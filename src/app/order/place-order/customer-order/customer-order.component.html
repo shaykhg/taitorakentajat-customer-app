@@ -1,0 +1,197 @@
+<div *ngFor="let service of data.order.services">
+
+
+  <div *ngIf="service.viewType === 1" class="mt-4">
+    <mat-card class="prop_card">
+      <h2>{{service.name}}</h2>
+
+
+
+      <mat-form-field *ngFor="let pack of data.order.packages" class="w-100" appearance="outline">
+        <mat-label>Your Packages</mat-label>
+        <input   [value]="pack.name" matInput readonly />
+      </mat-form-field>
+
+      <mat-form-field class="w-100" appearance="outline" *ngIf="data.addSlot">
+        <mat-label>Inception Date & Time</mat-label>
+        <input [value]="util.getHumanDateTime(data.addSlot)" matInput readonly />
+      </mat-form-field>
+
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>Price</mat-label>
+        <input [value]="service.price" matInput readonly />
+      </mat-form-field>
+
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>Roof Material</mat-label>
+        <input [value]="service.roofMaterial" matInput readonly />
+      </mat-form-field>
+
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>Meter Square</mat-label>
+        <input [value]="service.sqm" matInput readonly />
+      </mat-form-field>
+
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>Roof Incension</mat-label>
+        <input [value]="service.roofIncension" matInput readonly />
+      </mat-form-field>
+
+      <div class="text-start mt-5">
+        <button (click)="removeService()" class="delete_btn" mat-stroked-button> Remove</button>
+      </div>
+    </mat-card>
+  </div>
+
+
+  <div *ngIf="service.viewType === 2" class="mt-4">
+
+    <mat-card class="prop_card">
+      <h2>{{service.name}}</h2>
+
+      <mat-form-field  *ngFor="let pack of data.order.packages" appearance="outline" class="w-100">
+        <mat-label>Your Packages</mat-label>
+        <input [value]="pack.name" matInput readonly>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-label>Inspection Date & Time</mat-label>
+        <input [value]="util.getHumanDateTime(data.addSlot)" matInput readonly>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-label>Price</mat-label>
+        <input [value]="service.price" matInput readonly>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-label>Water Points</mat-label>
+        <input [value]="service.waterPoint" matInput readonly>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-label>Meter Square</mat-label>
+        <input [value]="service.sqm" matInput readonly>
+      </mat-form-field>
+
+
+      <div class="row pt-4">
+        <div class="col-12">
+          <span>{{service.demolition}}</span>
+        </div>
+      </div>
+
+      <div class="row pt-4">
+        <div class="col-12">
+          <span>{{service.refurbishment}}</span>
+        </div>
+      </div>
+
+      <div class="row pt-4">
+        <div class="col-12">
+          <span>{{service.waterproofing}}</span>
+        </div>
+      </div>
+
+      <div class="text-start mt-4">
+        <button (click)="removeService()" class="delete_btn" mat-stroked-button> Remove</button>
+      </div>
+    </mat-card>
+  </div>
+
+
+  <div *ngIf="service.viewType === 3" class="mt-4">
+    <mat-card class="prop_card">
+      <h2>{{service.name}}</h2>
+
+      <mat-form-field *ngFor="let pack of data.order.packages" appearance="outline" class="w-100">
+        <mat-label>Your Packages</mat-label>
+        <input [value]="pack.name" matInput readonly>
+      </mat-form-field>
+
+      <mat-form-field *ngIf="data.addSlot" appearance="outline" class="w-100">
+        <mat-label>Inspection Date & Time</mat-label>
+        <input [value]="util.getHumanDateTime(data.addSlot)" matInput readonly>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-label>Price</mat-label>
+        <input [value]="service.price" matInput readonly>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-label>Sauna Renovation</mat-label>
+        <input [value]="service.saunaRenovation" matInput readonly>
+      </mat-form-field>
+
+
+      <div class="row pt-4">
+        <div class="col-12">
+          <span>{{service.benches}}</span>
+        </div>
+      </div>
+
+      <div class="row pt-4">
+        <div class="col-12">
+          <span>{{service.stove}}</span>
+        </div>
+      </div>
+
+      <div class="row pt-4">
+        <div class="co-12">
+          <span>{{service.door}}</span>
+        </div>
+      </div>
+
+      <div class="text-start mt-4">
+        <button (click)="removeService()" class="delete_btn" mat-stroked-button> Remove</button>
+      </div>
+    </mat-card>
+  </div>
+
+
+  <div *ngIf="service.viewType === 4" class="mt-4">
+    <mat-card class="prop_card">
+      <h2>{{service.name}}</h2>
+
+      <mat-form-field *ngFor="let pack of data.order.packages" appearance="outline" class="w-100">
+        <mat-label>Your Packages</mat-label>
+        <input [value]="pack.name" matInput readonly>
+      </mat-form-field>
+
+      <mat-form-field *ngIf="data.addSlot" appearance="outline" class="w-100">
+        <mat-label>Inception Date & Time</mat-label>
+        <input [value]="util.getHumanDateTime(data.addSlot)" matInput readonly>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-label>Price</mat-label>
+        <input [value]="service.price" matInput readonly>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-label>Base Job</mat-label>
+        <input [value]="service.baseJob" matInput readonly>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-label>Paint</mat-label>
+        <input [value]="service.paint" matInput readonly>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-label>Meter Square</mat-label>
+        <input [value]="service.sqm" matInput readonly>
+      </mat-form-field>
+
+
+      <div class="text-start mt-4">
+        <button (click)="removeService()" class="delete_btn" mat-stroked-button> Remove</button>
+      </div>
+    </mat-card>
+  </div>
+
+</div>
+
+
+

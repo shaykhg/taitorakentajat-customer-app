@@ -1,0 +1,198 @@
+<ion-content [fullscreen]="true" *ngIf="!progress">
+
+  <app-stepper></app-stepper>
+
+  <div class="my-4 text-center"><h4>Step {{stepper.currentStep + 1}} Out Of {{stepper.steps.length}}</h4></div>
+  <div class="info-card">
+    <div class="info-card">
+      <!--            <app-schedule></app-schedule>-->
+      <div>
+        <mat-card class="p-0 cart">
+
+          <div class="card_header text-end">
+            <div class="text-center">
+              <h1 class="pt-4">{{dataShare.order.totalPrice.toFixed(2)}}€</h1>
+            </div>
+
+            <span class="vat">(Incl. VAT)</span>
+          </div>
+
+          <div class="card_contain ">
+
+            <div>
+
+              <div *ngIf="this.dataShare.order.customerDetails.propertyType" class="m-t-10 m-b-10">
+                <div class="info-title"><span class="mdi mdi-office-building fs-26"></span><span class="self-center m-l-5">Property type</span></div>
+                <ul style="list-style: none;margin: 0">
+                  <li>
+                    <div class="dis-flex">
+                      <span class="mdi mdi-circle sub-info-icon"></span>
+                      <span class="sub-info">{{this.dataShare.order.customerDetails.propertyType}}</span>
+                    </div>
+                  </li>
+                </ul>
+
+              </div>
+
+
+              <div *ngIf="this.dataShare.order.customerDetails.propertySize" class="m-t-10 m-b-10">
+                <div class="info-title"><span class="mdi mdi-tape-drive fs-26"></span><span class="self-center m-l-5">Property Size</span></div>
+                <ul style="list-style: none;margin: 0">
+                  <li>
+                    <div class="dis-flex">
+                      <span class="mdi mdi-circle sub-info-icon"></span>
+                      <span class="m-l-7 sub-info">{{this.dataShare.order.customerDetails.propertySize}}m<sup>2</sup></span>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+
+              <div *ngIf="dataShare.order.services.length > 0" class="m-t-10 m-b-10">
+                <div class="info-title"><span class="mdi mdi-arrow-right-bold fs-26"></span><span class="self-center m-l-5">Selected Services</span></div>
+
+                <div *ngFor="let service of dataShare.order.services">
+                  <ul style="list-style: none;margin: 0">
+                    <li class="dis-flex">
+                      <span class="mdi mdi-check sub-info-icon" style="font-size: 22px"></span>
+                      <span class="m-l-7 sub-info">{{service.name}}</span>
+                    </li>
+                  </ul>
+                </div>
+                <ul class="declare" style="list-style: none;margin: 0">
+                  <li *ngIf="dataShare.order.productHandle.buySelf || dataShare.order.productHandle.assist" >{{dataShare.order.productHandle.buySelf ? '*I will provide products myself' : '*We will assist you with products'}}</li>
+                </ul>
+              </div>
+              <div *ngIf="dataShare.order.packages.length > 0" class="m-t-10 m-b-10">
+                <div class="info-title"><span class="mdi mdi-package fs-26"></span><span class="self-center m-l-5">Selected Package</span></div>
+
+                <div *ngFor="let pack of dataShare.order.packages">
+                  <ul style="list-style: none;margin: 0">
+                    <li class="dis-flex">
+                      <span class="mdi mdi-check sub-info-icon" style="font-size: 22px"></span>
+                      <span class="m-l-7 sub-info">{{pack.name}}</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div *ngIf="dataShare.addSlot" class="m-t-10 m-b-10">
+                <div class="info-title"><span class="mdi mdi-calendar fs-26"></span><span class="self-center m-l-5">Schedule</span></div>
+
+                <div>
+                  <ul style="list-style: none;margin: 0">
+                    <li>
+                      <div class="dis-flex">
+                        <span class="mdi mdi-circle sub-info-icon"></span>
+                        <span class="m-l-7 sub-info">Date: {{util.getIndianDate(dataShare.addSlot)}}</span>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+            </div>
+
+            <!--                <div *ngIf="dataShare.companySize || dataShare.experienceLevel">-->
+            <!--                  <h4 class="service_tag">Order Info :</h4>-->
+
+            <!--                  <div class="row" *ngFor="let service of dataShare.order.services">-->
+            <!--                    <div class="row">-->
+            <!--                      <div class="col-4">-->
+            <!--                        <p class="fw-bold" style="font-size: 14px;">Service</p>-->
+            <!--                      </div>-->
+
+            <!--                      <div class="col-8">-->
+            <!--                        <span class="fw-normal" style="font-size: 13px;">{{service.name}}</span>-->
+            <!--                      </div>-->
+            <!--                    </div>-->
+
+            <!--                    <div class="row">-->
+            <!--                      <div class="col-4">-->
+            <!--                        <p class="fw-bold" style="font-size: 14px;">Cost</p>-->
+            <!--                      </div>-->
+
+            <!--                      <div class="col-8">-->
+            <!--                        <span class="fw-normal" style="font-size: 13px;">&euro;{{service.price}}</span>-->
+            <!--                      </div>-->
+            <!--                    </div>-->
+
+            <!--                  </div>-->
+            <!--                  <div class="row" *ngFor="let service of dataShare.order.services">-->
+            <!--                    <div class="row">-->
+            <!--                      <div class="col-4">-->
+            <!--                        <p class="fw-bold" style="font-size: 14px;">Service</p>-->
+            <!--                      </div>-->
+
+            <!--                      <div class="col-8">-->
+            <!--                        <span class="fw-normal" style="font-size: 13px;">{{service.name}}</span>-->
+            <!--                      </div>-->
+            <!--                    </div>-->
+
+            <!--                    <div class="row">-->
+            <!--                      <div class="col-4">-->
+            <!--                        <p class="fw-bold" style="font-size: 14px;">Cost</p>-->
+            <!--                      </div>-->
+
+            <!--                      <div class="col-8">-->
+            <!--                        <span class="fw-normal" style="font-size: 13px;">&euro;{{service.price}}</span>-->
+            <!--                      </div>-->
+            <!--                    </div>-->
+
+            <!--                  </div>-->
+
+            <!--                  <div class="row" *ngIf="dataShare.companySize">-->
+            <!--                    <div class="col-4">-->
+            <!--                      <p class="fw-bold" style="font-size: 14px;">Company:</p>-->
+            <!--                    </div>-->
+
+            <!--                    <div class="col-8">-->
+            <!--                      <span class="fw-normal" style="font-size: 13px;">{{dataShare.companySize}}</span>-->
+            <!--                    </div>-->
+
+            <!--                  </div>-->
+            <!--                  <div class="row">-->
+            <!--                    <div class="col-4 col-md-4">-->
+            <!--                      <p class="fw-bold" style="font-size: 14px;">Experience:</p>-->
+            <!--                    </div>-->
+
+            <!--                    <div class="col-8 col-md-8">-->
+            <!--                      <span class="fw-normal" style="font-size: 13px;">{{dataShare.experienceLevel}}</span>-->
+            <!--                    </div>-->
+            <!--                  </div>-->
+            <!--                  <div class="row" *ngIf="dataShare.renovationTime">-->
+            <!--                    <div class="col-4">-->
+            <!--                      <p class="fw-bold" style="font-size: 14px;">Renovation Start Day:</p>-->
+            <!--                    </div>-->
+
+            <!--                    <div class="col-8">-->
+            <!--                      <span class="fw-normal" style="font-size: 13px;">{{dataShare.setRenoDate()}}</span>-->
+            <!--                    </div>-->
+            <!--                  </div>-->
+            <!--                </div>-->
+          </div>
+
+        </mat-card>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="mt-5" *ngIf="loadAgain">
+    <div [ngClass]="stepper.currentStep === 0 ? '' : 'd-none'">
+      <app-add-service [url]="url"></app-add-service>
+    </div>
+
+    <div [ngClass]="stepper.currentStep === 1 ? '' : 'd-none'">
+      <app-packages></app-packages>
+    </div>
+
+    <div [ngClass]="stepper.currentStep === 2 ? '' : 'd-none'">
+      <app-schedule></app-schedule>
+    </div>
+
+    <div [ngClass]="stepper.currentStep === 3 ? '' : 'd-none'">
+      <app-place-order></app-place-order>
+    </div>
+  </div>
+</ion-content>

@@ -1,0 +1,105 @@
+<div class="container">
+  <div>
+
+<!--    Question number 1-->
+
+    <div *ngIf="data.company.question.one.enable" class="user_input  ">
+      <div class="text-center mb-4">
+        <h1 class="heading">Create Company <br>Profile</h1>
+        <span>1 of 3 Question</span>
+      </div>
+      <div>
+        <p class="">{{data.company.question.one.qus}}</p>
+        <mat-form-field style="width: 100%" appearance="outline">
+          <mat-label>Company Name</mat-label>
+          <input #name matInput type="text">
+        </mat-form-field>
+      </div>
+      <div class="text-center next_btn">
+        <button [disabled]="!(name.value.length > 0)" (click)="moveNextOne( name)" class="btn_btn" mat-raised-button>Next</button>
+      </div>
+
+    </div>
+
+    <!--    Question number 2-->
+
+    <div *ngIf="data.company.question.two.enable" class="user_input">
+      <div class="text-center mb-4">
+        <h1 class="heading">Create Company <br>Profile</h1>
+        <span>2 of 3 Question</span>
+      </div>
+      <div>
+        <p class="">{{data.company.question.two.qus}}</p>
+        <mat-radio-group [(ngModel)]="getAns">
+          <div>
+           <span>Startup (1 to 20)</span> <mat-radio-button value="Startup (1 to 20)" ></mat-radio-button>
+          </div>
+          <div>
+            <span>Small (20 to 100)</span><mat-radio-button value="Small (20 to 100)"></mat-radio-button>
+          </div>
+          <div>
+            <span>Medium (100 to 500)</span><mat-radio-button value="Medium (100 to 500)"></mat-radio-button>
+          </div>
+          <div>
+            <span>Big (500 to 1000+)</span><mat-radio-button value="Big (500 to 1000+)"></mat-radio-button>
+          </div>
+
+
+        </mat-radio-group>
+
+      </div>
+      <div class="text-center next_btn">
+        <button (click)="moveNextTwo()" class="btn_btn" mat-raised-button>Next</button>
+      </div>
+
+    </div>
+
+    <!--    Question number 3-->
+
+    <div *ngIf="data.company.question.three.enable" class="user_input">
+      <div class="text-center mb-4">
+        <h1 class="heading">Create Company <br>Profile</h1>
+        <span>3 of 3 Question</span>
+      </div>
+
+      <div>
+        <p class="">3.How much experience do you have?</p>
+        <mat-radio-group>
+          <div><span>Fresh</span>
+            <mat-radio-button value="fresh"></mat-radio-button>
+          </div>
+
+          <div ><span>Intermediate</span>
+            <mat-radio-button value="intermediate"></mat-radio-button>
+          </div>
+
+          <div ><span>Fresh</span>
+            <mat-radio-button value="fresh"></mat-radio-button>
+          </div>
+        </mat-radio-group>
+
+
+
+
+      <div class="text-center next_btn">
+        <button (click)="moveNextThree()" class="btn_btn" mat-raised-button>Next</button>
+      </div>
+    </div>
+
+
+  </div>
+
+    <!--    Question number 4-->
+    <div *ngIf="data.company.question.four.enable" class="user_input">
+      <div>
+        <img alt="" src="assets/img/company/completed.png">
+        <p class="text-center success">Your company profile is <span class="">Created Successfully</span></p>
+      </div>
+
+      <div class="text-center next_btn marg">
+        <button routerLink="/tabs/dashboard" class="btn_btn" mat-raised-button>Continue</button>
+      </div>
+    </div>
+
+  </div>
+</div>

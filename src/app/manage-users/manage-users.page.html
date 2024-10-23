@@ -1,0 +1,76 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Manage User</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="session.ready">
+
+  <div *ngIf="session.getUser().role === 'Staff'; else admin" class="container h-100 not_allowed">
+    <div class="h-100 d-flex flex-column justify-content-center align-items-center ">
+      <span><svg style="width:64px;height:64px" viewBox="0 0 24 24">
+    <path d="M10 4A4 4 0 0 0 6 8A4 4 0 0 0 10 12A4 4 0 0 0 14 8A4 4 0 0 0 10 4M17.5 13C15 13 13 15 13 17.5C13 20 15 22 17.5 22C20 22 22 20 22 17.5C22 15 20 13 17.5 13M10 14C5.58 14 2 15.79 2 18V20H11.5A6.5 6.5 0 0 1 11 17.5A6.5 6.5 0 0 1 11.95 14.14C11.32 14.06 10.68 14 10 14M17.5 14.5C19.16 14.5 20.5 15.84 20.5 17.5C20.5 18.06 20.35 18.58 20.08 19L16 14.92C16.42 14.65 16.94 14.5 17.5 14.5M14.92 16L19 20.08C18.58 20.35 18.06 20.5 17.5 20.5C15.84 20.5 14.5 19.16 14.5 17.5C14.5 16.94 14.65 16.42 14.92 16Z"
+          fill="currentColor"/>
+</svg></span>
+      <div class="mt-3">Your are not authorized to see this page</div>
+    </div>
+
+  </div>
+
+  <ng-template #admin>
+    <div class="container h-100 position-relative">
+      <div *ngIf="session.getCompany().staff ? session.getCompany().staff.length === 0 : true; else users"
+           class="placeholder">
+        <img alt="" src="assets/img/company/placeholder.png">
+        <h3>No user added</h3>
+      </div>
+
+      <ng-template #users>
+        <div *ngFor="let staff of session.getCompany().staff">
+          <mat-card *ngIf="session.getUser().role === 'Company' " class="user_style">
+            <div class="user_details">
+              <div>
+                <div>
+                          <span class="pe-2">
+
+                            <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                              <path d="M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,6A2,2 0 0,0 10,8A2,2 0 0,0 12,10A2,2 0 0,0 14,8A2,2 0 0,0 12,6M12,13C14.67,13 20,14.33 20,17V20H4V17C4,14.33 9.33,13 12,13M12,14.9C9.03,14.9 5.9,16.36 5.9,17V18.1H18.1V17C18.1,16.36 14.97,14.9 12,14.9Z" fill="currentColor"/>
+                            </svg></span>
+                  <span>
+                  {{staff.name}}
+                  </span>
+                </div>
+
+                <div>
+                  <span  class="pe-2"><svg style="width:24px;height:24px" viewBox="0 0 24 24">
+    <path d="M22 6C22 4.9 21.1 4 20 4H4C2.9 4 2 4.9 2 6V18C2 19.1 2.9 20 4 20H20C21.1 20 22 19.1 22 18V6M20 6L12 11L4 6H20M20 18H4V8L12 13L20 8V18Z"
+          fill="currentColor"/>
+</svg></span>
+                  <span>{{staff.email}}</span>
+                </div>
+                <!--                <p class="mb-0 pb-1">{{staff.name}}</p>-->
+                <!--                <p class="mb-0 text-black-50">{{staff.email}}</p>-->
+              </div>
+              <!--              <span class="edit_icon"><ion-icon name="create-outline"></ion-icon></span>-->
+              <span (click)="deleteAlert(staff)" class="edit_icon"><ion-icon name="trash-outline"></ion-icon></span>
+            </div>
+
+          </mat-card>
+        </div>
+
+      </ng-template>
+      <div class="add_user_btn text-center">
+        <button class="btn_btn" mat-mini-fab routerLink="add-user">
+          <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+            <path d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" fill="#fff"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+  </ng-template>
+
+</ion-content>

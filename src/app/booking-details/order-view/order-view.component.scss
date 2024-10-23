@@ -1,0 +1,44 @@
+*{
+  font-family: 'Montserrat', sans-serif;
+}
+
+.booking-card{
+  margin: 12px;
+  border-radius: 12px;
+}
+
+.heading{
+  font-size: larger;
+  color: #4caf50;
+  margin-bottom: 12px;
+}
+
+.thumbnail {
+  height: 80px;
+  width: 80px;
+}
+
+.status-chip{
+  border-radius: 12px;
+  color: white;
+  padding: 4px 12px;
+  font-size: small;
+}
+
+.apply-btn{
+  color: green;
+  border: 1px solid green;
+  margin: 5px 15px;
+}
+.apply-btn:disabled{
+  color: grey;
+  margin: 5px 15px;
+  border: none;
+}
+
+.mat-progress-spinner {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  margin-top: 30%;
+}

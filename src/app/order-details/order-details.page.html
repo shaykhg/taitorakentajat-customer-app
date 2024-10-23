@@ -1,0 +1,301 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Order Detail</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="container" *ngIf="data.currentOrder">
+    <div class="order_heading">
+      <p class="fw-bold">Your Order At A Glance</p>
+    </div>
+    <div>
+      <mat-card class="order_card mat-elevation-z3" >
+
+          <div class="text-center"><p class="fw-normal total_price">&euro;{{data.currentOrder.total}}</p></div>
+
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="order_id mb-4"><p class="fw-normal mb-0"><span
+              class="text_success fw-bold">OrderId:</span>{{ data.currentOrder.id}}</p></div>
+
+            <div [routerLink]= "'/review/' + data.currentOrder.id + '/' + data.currentOrder.user._id" class="rating-link">Tell about your experience here</div>
+            <h5>Property Details</h5>
+            <div class="row">
+              <div class="col"><p>Property Type:</p></div>
+              <div class="col"><p>{{data.currentOrder.propertyType}}</p></div>
+            </div>
+
+            <div class="row">
+              <div class="col-6"><p>Property Size:</p></div>
+              <div class="col-6"><p>{{data.currentOrder.propertySize}}</p></div>
+            </div>
+
+            <div class="row">
+              <div class="col-6"><p>Street & Building:</p></div>
+              <div class="col-6"><p>{{data.currentOrder.building}}</p></div>
+            </div>
+
+            <div class="row">
+              <div class="col-6"><p>Post Code:</p></div>
+              <div class="col-6"><p>{{data.currentOrder.postcode}}</p></div>
+            </div>
+
+            <div class="row">
+              <div class="col-6"><p>City:</p></div>
+              <div class="col-6"><p>{{data.currentOrder.city}}</p></div>
+            </div>
+
+          </div>
+          <div *ngIf="orderShow">
+            <div class="col-sm-12 mt-4">
+              <h5>Calendar</h5>
+
+              <div class="row">
+                <div class="col-6"><p>Renovation Date:</p></div>
+                <div class="col-6">
+                  <p>{{data.currentOrder.renovationDate ? util.getHumanDateTime(data.currentOrder.renovationTime) : '__/__/__ '}} </p></div>
+              </div>
+              <div class="row">
+
+                <div class="col-6"><p>Renovation Time:</p></div>
+                <div class="col-6"><p>{{data.currentOrder.timeNotFound ? data.currentOrder.customerTime.time : data.currentOrder.time.label}}</p></div>
+              </div>
+              <div class="row">
+                <div class="col-6"><p>Need Assistant:</p></div>
+                <div class="col-6"><p>{{data.currentOrder.assist ? 'Yes' : 'No'}}</p></div>
+              </div>
+            </div>
+<!--            <div class="col-sm-12 mt-4">-->
+<!--              <h5>Service Provider</h5>-->
+<!--              <div class="row">-->
+<!--                <div class="col-6"><p>Company Size:</p></div>-->
+<!--                <div class="col-6"><p>{{data.currentOrder.companySize}}</p></div>-->
+<!--              </div>-->
+
+<!--              <div class="row">-->
+<!--                <div class="col-6"><p>Experience Level:</p></div>-->
+<!--                <div class="col-6"><p>{{data.currentOrder.expLevel}}</p></div>-->
+<!--              </div>-->
+
+<!--            </div>-->
+
+          </div>
+          <p class="text-center mb-0 mt-4" (click)="orderShow =! orderShow">See more</p>
+        </div>
+      </mat-card>
+
+      <div>
+
+        <mat-tab-group>
+          <mat-tab *ngFor="let pack of data.currentOrder.packages" label="{{pack.service}}">
+
+                        <div *ngFor="let service of data.currentOrder.orderedServices">
+
+                          <div *ngIf="pack.service.toLowerCase() === service.name.toLowerCase()" class="mt-4">
+                            <div class="row pt-4">
+                              <!--        {{service | json}}-->
+                              <div class="col-6">
+                                <span>Roof Material:</span>
+                              </div>
+                              <div class="col-6 text-center">
+                                <span>{{service.roofMaterial}}</span>
+                              </div>
+
+                            </div>
+
+
+                            <div class="row pt-4">
+                              <div class="col-6">
+                                <span>Meter Square:</span>
+                              </div>
+
+                              <div class="col-6 text-center">
+                                <span>{{service.sqm}}</span>
+                              </div>
+
+                            </div>
+
+
+                            <div class="row pt-4">
+                              <div class="col-6">
+                                <span>Roof Incension:</span>
+                              </div>
+
+                              <div class="col-6 text-center">
+                                <span>{{service.roofIncension}}</span>
+                              </div>
+
+
+                            </div>
+                          </div>
+
+                          <div  *ngIf="pack.service.toLowerCase() === service.name.toLowerCase()" class="mt-4">
+
+                            <div class="row pt-4">
+                              <div class="col-6">
+                                <span>Water Points:</span>
+                              </div>
+                              <div class="col-6">
+                                <span>{{service.waterPoint}}</span>
+                              </div>
+                            </div>
+
+
+                            <div class="row pt-4">
+                              <div class="col-6">
+                                <span>Meter Squar:</span>
+                              </div>
+                              <div class="col-6">
+                                <span>{{service.sqm}}</span>
+                              </div>
+                            </div>
+
+
+                            <div class="row pt-4">
+                              <div class="col-12">
+                                <span>{{service.demolition}}</span>
+                              </div>
+                            </div>
+
+                            <div class="row pt-4">
+                              <div class="col-12">
+                                <span>{{service.refurbishment}}</span>
+                              </div>
+                            </div>
+
+                            <div class="row pt-4">
+                              <div class="col-12">
+                                <span>{{service.waterproofing}}</span>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div  *ngIf="pack.service.toLowerCase() === service.name.toLowerCase()" class="mt-4">
+
+                            <div class="row pt-4">
+                              <div class="col-6">
+                                <span>Sauna Renovation:</span>
+                              </div>
+                              <div class="col-6">
+                                <span>{{service.saunaRenovation}}</span>
+                              </div>
+
+                            </div>
+
+
+                            <div class="row pt-4">
+                              <div class="col-12">
+                                <span>{{service.benches}}</span>
+                              </div>
+                            </div>
+
+                            <div class="row pt-4">
+                              <div class="col-12">
+                                <span>{{service.stove}}</span>
+                              </div>
+                            </div>
+
+                            <div class="row pt-4">
+                              <div class="co-12">
+                                <span>{{service.door}}</span>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div  *ngIf="pack.service.toLowerCase() === service.name.toLowerCase()" class="mt-4">
+                            <div class="row pt-4">
+                              <div class="col-6">
+                                <span>Base Job:</span>
+                              </div>
+                              <div class="col-6">
+                                <span>{{service.baseJob}}</span>
+                              </div>
+
+                            </div>
+
+
+                            <div class="row pt-4">
+                              <div class="col-6">
+                                <span>Paint:</span>
+                              </div>
+
+                              <div class="col-6">
+                                <span>{{service.paint}}</span>
+                              </div>
+
+                            </div>
+
+
+                            <div class="row pt-4">
+                              <div class="col-6">
+                                <span>Meter Squar:</span>
+                              </div>
+
+                              <div class="col-6">
+                                <span>{{service.sqm}}</span>
+                              </div>
+
+                            </div>
+                          </div>
+
+                        </div>
+
+
+            <div class="mat_tab_card">
+              <mat-card class="position-relative pack_div">
+
+                <div>
+
+                </div>
+                <div class="border_label">
+                  <p class="mb-0">{{pack.name}}</p>
+                </div>
+                <div class="pak_div">
+                  <div class="border-bottom">
+                    <div class="d-flex justify-content-between price">
+                      <p>{{pack.price}}€</p>
+                    </div>
+                    <p class="text-center">Lorem ipsum dolor sit amet.</p>
+                  </div>
+                  <div class=" pt-4">
+                    <div class="pack_img text-center">
+                      <img alt="" src="assets/packages/paint-box.png">
+                    </div>
+
+                    <div class="pack_containt">
+                      <h5>Asian Paints</h5>
+                      <p>{{pack.description}}</p>
+                    </div>
+                  </div>
+
+
+
+                  <div class=" pack_details" *ngIf="pack.expanded">
+                    <div class="pack_img text-center">
+                      <img alt="" src="assets/packages/paint-box.png">
+                    </div>
+
+                    <div class="pack_containt">
+                      <h5>Asian Paints</h5>
+                      <p>{{pack.description}}</p>
+                    </div>
+                  </div>
+
+                  <div class="text-center">
+                    <button class="see_more" (click)=" pack.expanded = ! pack.expanded;">See More</button>
+                  </div>
+                </div>
+
+              </mat-card>
+            </div>
+          </mat-tab>
+
+        </mat-tab-group>
+      </div>
+    </div>
+  </div>
+
+</ion-content>

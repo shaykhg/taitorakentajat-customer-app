@@ -1,0 +1,13 @@
+{
+  "appId": "fi.taito.customer",
+  "appName": "Taito Customer",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www",
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 0
+    }
+  },
+  "cordova": {}
+}

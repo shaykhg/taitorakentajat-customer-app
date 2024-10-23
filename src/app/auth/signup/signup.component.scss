@@ -1,0 +1,98 @@
+*{
+  font-family: 'Montserrat', sans-serif;
+}
+
+
+.container {
+
+}
+
+
+.mat-form-field {
+  width: 100%;
+
+}
+
+.main-container {
+  display: flex;
+  height: 100%;
+  justify-content: center;
+}
+
+mat-card-title,
+mat-card-content {
+  display: flex;
+  justify-content: center;
+}
+
+
+.button {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.signup {
+  color: #59BD2F;
+  font-size: 16px;
+  text-decoration: none;
+}
+
+.heading {
+  color: #59BD2F;
+  padding: 10px;
+}
+
+.card {
+  width: 94%;
+  border-radius: 20px;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.background {
+background: #56ab2f;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #a8e063, #56ab2f);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #a8e063, #56ab2f);
+  height: 100vh;
+}
+
+.signup-btn {
+  width: 100%;
+  background: #59BD2F;
+  color:#ffffff;
+}
+
+.p-signup {
+  margin-top: 10px;
+}
+
+.btn_btn{
+  background-color: #59BD2F;
+  color: #fff;
+  padding: 7px 50px;
+  border-radius: 10px;
+}
+
+.logo{
+  cursor: pointer;
+  outline: none;
+  margin-top: 50px;
+}
+
+//
+//@media only screen and (max-width: 750px) {
+//  .card{
+//    width: 55%;
+//  }
+//
+//}
+//
+//
+//@media only screen and (max-width:650px){
+//  .card{
+//    width: 100%;
+//  }
+//}

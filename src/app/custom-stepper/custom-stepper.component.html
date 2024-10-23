@@ -1,0 +1,18 @@
+<section class="container mt-5">
+  <footer class="step-navigation-bar">
+<!--    <button class="nav-button" cdkStepperPrevious>&larr;</button>-->
+    <div class="d-flex justify-content-around text-center">
+      <mat-progress-bar mode="determinate" [value]="data.progress" class="progress"></mat-progress-bar>
+    <button class="step " *ngFor="let step of steps; let i = index;" [class] = "'step' + (selectedIndex === i ? 'active' : '')" (click)="onClick(i)">
+      {{i+1}}
+    </button>
+    </div>
+<!--    <button class="nav-button" cdkStepperNext>&rarr;</button>-->
+  </footer>
+  <header class="text-center mt-4"><h4>Step {{selectedIndex + 1}} out of {{steps.length}}</h4></header>
+
+  <div [style.display]="selected ? 'block' : 'none'">
+    <!-- Content from the CdkStep is projected here -->
+    <div [ngTemplateOutlet]="selected.content"></div>
+  </div>
+</section>

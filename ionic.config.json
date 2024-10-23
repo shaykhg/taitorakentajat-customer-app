@@ -1,0 +1,7 @@
+{
+  "name": "Taito Customer",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

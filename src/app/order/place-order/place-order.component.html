@@ -1,0 +1,177 @@
+<div class="text-center">
+  <h1>Order</h1>
+</div>
+
+<div class="container position-relative mt-5">
+
+
+  <div>
+    <mat-card class="prop_card">
+      <div class="order_header">
+        <h3>Order Summary <sub class="info" matTooltip="Info about the action"> &#8505;</sub></h3>
+      </div>
+      <h4 class="mb-4">Property Details</h4>
+
+
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>Property Type</mat-label>
+        <input [value]="data.order.customerDetails.propertyType" matInput readonly>
+      </mat-form-field>
+
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>Street & Building</mat-label>
+        <input [value]="data.order.customerDetails.street" matInput readonly>
+      </mat-form-field>
+
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>Post Code</mat-label>
+        <input [value]="data.order.customerDetails.postCode" matInput readonly>
+      </mat-form-field>
+
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>City</mat-label>
+        <input [value]="data.order.customerDetails.city" matInput readonly>
+      </mat-form-field>
+
+      <!--      <div class="row pb-5">-->
+      <!--        <div class="col-6">:</div>-->
+      <!--        <div class="col-6">{{}}</div>-->
+      <!--      </div>-->
+
+      <!--      <div class="row pb-5">-->
+      <!--        <div class="col-6">Property Size:</div>-->
+      <!--        <div class="col-6">{{data.order.customerDetails.propertySize}}</div>-->
+      <!--      </div>-->
+
+      <!--      <div class="row pb-5">-->
+      <!--        <div class="col-6">Street & Building:</div>-->
+      <!--        <div class="col-6">{{data.order.customerDetails.street}}</div>-->
+      <!--      </div>-->
+
+      <!--      <div class="row pb-5">-->
+      <!--        <div class="col-6">Post Code:</div>-->
+      <!--        <div class="col-6">{{data.order.customerDetails.postCode}}</div>-->
+      <!--      </div>-->
+
+      <!--      <div class="row pb-5">-->
+      <!--        <div class="col-6">City:</div>-->
+      <!--        <div class="col-6">{{data.order.customerDetails.city}}</div>-->
+      <!--      </div>-->
+    </mat-card>
+
+    <app-customer-order></app-customer-order>
+
+
+    <form [formGroup]="placeOrder">
+
+      <mat-card class="my-5 prop_card">
+        <div class="upload_div">
+          <h3>Add Photos</h3>
+          <p>Add photos of property</p>
+        </div>
+
+        <div class="text-center dis-flex">
+          <div class="image-cont">
+            <span class="mdi mdi-close-circle-outline img-close"  *ngIf="imageUrl.one.length > 0" (click)="removeImage('one')"></span>
+            <div class="upload-btn-wrapper">
+              <button *ngIf="imageUrl.one.length === 0" class="btn_up">+</button>
+              <img *ngIf="imageUrl.one.length > 0" [src]="imageUrl.one" class="product_img">
+              <input (change)="onFileChange($event, 'one')" type="file">
+            </div>
+          </div>
+          <div class="image-cont">
+            <span class="mdi mdi-close-circle-outline img-close"  *ngIf="imageUrl.two.length > 0" (click)="removeImage('two')"></span>
+            <div class="upload-btn-wrapper">
+              <button *ngIf="imageUrl.two.length === 0" class="btn_up">+</button>
+              <img *ngIf="imageUrl.two.length > 0" [src]="imageUrl.two" class="product_img">
+              <input (change)="onFileChange($event, 'two')" type="file">
+            </div>
+          </div>
+          <div class="image-cont">
+
+            <span class="mdi mdi-close-circle-outline img-close"  *ngIf="imageUrl.three.length > 0" (click)="removeImage('three')"></span>
+            <div class="upload-btn-wrapper">
+              <button *ngIf="imageUrl.three.length === 0" class="btn_up">+</button>
+              <img *ngIf="imageUrl.three.length > 0" [src]="imageUrl.three" class="product_img">
+              <input (change)="onFileChange($event, 'three')" type="file">
+            </div>
+          </div>
+          <div class="image-cont">
+            <span class="mdi mdi-close-circle-outline img-close"  *ngIf="imageUrl.four.length > 0" (click)="removeImage('four')"></span>
+            <div class="upload-btn-wrapper">
+              <button *ngIf="imageUrl.four.length === 0" class="btn_up">+</button>
+              <img *ngIf="imageUrl.four.length > 0" [src]="imageUrl.four" class="product_img">
+              <input (change)="onFileChange($event, 'four')" type="file">
+            </div>
+          </div>
+
+        </div>
+
+        <div>
+          <mat-form-field appearance="fill" class="w-100  pt-4">
+            <mat-label>Add Notes</mat-label>
+            <textarea [maxlength]="250" formControlName="notes" matInput></textarea>
+            <mat-error>This Field Can't Be Empty</mat-error>
+          </mat-form-field>
+        </div>
+
+      </mat-card>
+
+      <mat-card class="prop_card mat-elevation-z5">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>First Name</mat-label>
+          <input formControlName="fname" matInput placeholder="First name here" type="text">
+          <mat-error>This Field Can't Be Empty</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Last Name</mat-label>
+          <input [maxLength]="18" formControlName="lname" matInput placeholder="Last name here" type="text">
+          <mat-error>This Field Can't Be Empty</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Email</mat-label>
+          <input [maxLength]="50" formControlName="email" matInput placeholder="Your email address" type="text">
+          <mat-error>Please enter valid email</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Phone</mat-label>
+          <input [maxLength]="10" formControlName="phone" matInput placeholder="Phone number here" type="text">
+        </mat-form-field>
+        <div *ngIf="f.phone.touched && f.phone.invalid" class="error">
+          <mat-error *ngIf="f.phone.errors.required">Mobile Number is required.</mat-error>
+          <mat-error *ngIf="f.phone.errors.pattern" >Please enter valid phone number</mat-error>
+        </div>
+
+        <div class="d-flex flex-column t_and_c my-5">
+          <mat-checkbox class="mb-3" formControlName="termAccept" (change)="getTermAccept($event)">
+            I accept the <span class="term_condition" (click)="openDialog()">terms and conditions</span>
+          </mat-checkbox>
+
+          <mat-checkbox formControlName="cancellation" (change)="getPolicy($event)">
+            Cancellation policy <span (click)="openPolicy()" class="term_condition">Click here to see</span>
+          </mat-checkbox>
+        </div>
+        <div class="d-flex notify">
+          <div class="me-4 emoji_div"><img alt="" class="emoji" src="assets/smiley.png">
+          </div>
+
+          <div>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error laudantium nihil porro quaerat quod
+              sit!</p>
+          </div>
+        </div>
+        <div>
+          <button (click)="imageUpload()" class="btn_btn" [disabled]="!policy || !termAndCondition || !placeOrder.valid" mat-raised-button>Place Order</button>
+        </div>
+
+
+      </mat-card>
+    </form>
+  </div>
+
+
+</div>
+

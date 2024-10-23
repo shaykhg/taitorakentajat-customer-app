@@ -1,0 +1,42 @@
+<div class="custom-cont ">
+<div class="text-center">
+  <div class="text-center">
+    <img alt="Logo" class="logo" src="assets/img/logo.png">
+  </div>
+  <div class=" login">
+
+
+    <form class="login_form" [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-label>Full Name</mat-label>
+        <input type="text" matInput placeholder="Full Name" formControlName="name">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-label>Email</mat-label>
+        <input matInput placeholder="Email" type="email" formControlName="email">
+        <mat-error>User with this email is not registered</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-label>Password</mat-label>
+        <input matInput placeholder="Password" type="password" formControlName="password">
+        <mat-error>Please enter a valid password of min 8 characters</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-label>Confirm Password</mat-label>
+        <input matInput placeholder="Confirm Password" type="password" formControlName="cpassword">
+      </mat-form-field>
+
+
+
+      <div class="text-center">
+        <button [disabled]="!signUpForm.valid" class="btn_btn" mat-raised-button type="submit">Sign Up</button>
+      </div>
+    </form>
+  </div>
+  <p class="sign_up">Already have an account?<span routerLink="/auth/login">Login</span></p>
+</div>
+</div>

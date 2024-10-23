@@ -1,0 +1,43 @@
+* {
+  font-family: 'Montserrat', sans-serif;
+}
+
+hr {background: #A4A4A6;}
+
+.bg-head {
+  background-color: #f0f0f0 !important;
+  color: #1a1a1a;
+  padding: 8px 16px;
+  border-bottom: 1px #A4A4A6 solid;
+  border-top: 1px #A4A4A6 solid;
+}
+
+.sheet-padding
+{
+  padding: 4px;
+}
+
+ion-list.no-last-border {
+  :last-child {
+    --border-style: none !important;
+  }
+}
+
+.section-heading{
+  font-size: medium;
+  color: #4caf50;
+  margin-top: 16px;
+  margin-bottom: 8px;
+}
+.heading{
+  font-size: x-large;
+  color: #4caf50;
+  margin-top: 8px;
+  margin-bottom: 16px;
+}
+
+.section-heading-nm{
+  font-size: medium;
+  color: #4caf50;
+}
+

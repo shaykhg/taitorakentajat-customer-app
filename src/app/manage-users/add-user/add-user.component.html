@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Add User</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="container">
+    <h2 class="pt-4 ps-4">Manage Users</h2>
+    <mat-card class=" form_card mat-elevation-z3" >
+      <form [formGroup]="addUserForm" (ngSubmit)="onSubmit()">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Full Name</mat-label>
+          <input matInput placeholder="Full Name" type="text" formControlName="name">
+          <mat-error>Field is mandatory</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Email</mat-label>
+          <input matInput placeholder="Email" type="email" formControlName="email">
+          <mat-error>Please Enter Valid Email</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Password</mat-label>
+          <input matInput placeholder="Password" type="password" formControlName="password">
+          <mat-error>Please enter at least 8 characters</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Confirm Password</mat-label>
+          <input matInput placeholder="Confirm Password" type="password" formControlName="cnfPassword">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Select User Role</mat-label>
+          <mat-select formControlName="role">
+            <mat-option value="manager">Manager</mat-option>
+            <mat-option value="executive">Executive</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <div>
+          <button class="btn_btn" mat-raised-button type="submit" [disabled]="!addUserForm.valid">Save</button>
+        </div>
+      </form>
+    </mat-card>
+  </div>
+
+</ion-content>
